@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Use - Salion Games</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* --- GLOBAL STYLES (Same as index.html) --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Poppins', sans-serif; 
+            color: #333; 
+            background-color: #ffffff; 
+            line-height: 1.6; 
+            display: flex; 
+            flex-direction: column; 
+            min-height: 100vh; 
+        }
+        
+        /* --- HEADER --- */
+        header { 
+            padding: 20px 40px; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            background-color: #fff; 
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05); 
+            position: sticky; 
+            top: 0; 
+            z-index: 100; 
+        }
+        .logo { 
+            font-size: 2rem; 
+            font-weight: 700; 
+            color: #000; 
+            text-transform: uppercase; 
+            letter-spacing: 2px; 
+            text-decoration: none; 
+        }
+        
+        /* --- TERMS CONTENT --- */
+        .container { 
+            max-width: 800px; 
+            margin: 0 auto; 
+            padding: 60px 20px; 
+            flex: 1; 
+        }
+        
+        h1 { font-size: 2.5rem; margin-bottom: 10px; text-align: center; }
+        .date { display: block; text-align: center; color: #888; margin-bottom: 40px; font-size: 0.9rem; }
+        
+        h2 { font-size: 1.3rem; margin-top: 30px; margin-bottom: 15px; color: #000; font-weight: 600; }
+        p { margin-bottom: 20px; color: #555; text-align: justify; }
+        
+        ul { margin-bottom: 20px; padding-left: 20px; color: #555; }
+        li { margin-bottom: 10px; }
+        
+        a { color: #000; text-decoration: underline; }
+        a:hover { color: #555; }
+
+        /* --- FOOTER --- */
+        footer { 
+            background-color: #f9f9f9; 
+            text-align: center; 
+            padding: 40px 20px; 
+            margin-top: auto; 
+            border-top: 1px solid #eee; 
+            font-size: 0.9rem; 
+            color: #888; 
+        }
+        footer a { color: #333; text-decoration: none; margin: 0 10px; }
+        footer a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="index.html" class="logo">Salion</a>
+    </header>
+
+    <div class="container">
+        <h1>Terms & Conditions</h1>
+        <span class="date">Effective Date: June 24, 2023</span>
+
+        <p>
+            By downloading or using the game, these terms will automatically apply to you – you should make sure therefore that you read them carefully before using the game. You’re not allowed to copy or modify the game, any part of the game, or our trademarks in any way. You’re not allowed to attempt to extract the source code of the game, and you also shouldn’t try to translate the game into other languages or make derivative versions. The game itself, and all the trademarks, copyright, database rights, and other intellectual property rights related to it, still belong to Salion Production.
+        </p>
+
+        <p>
+            Salion Production is committed to ensuring that the game is as useful and efficient as possible. For that reason, we reserve the right to make changes to the game or to charge for its services, at any time and for any reason. We will never charge you for the game or its services without making it very clear to you exactly what you’re paying for.
+        </p>
+
+        <p>
+            Our games store and processes personal data that you have provided to us, to provide our games. It’s your responsibility to keep your phone and access to the game secure. We therefore recommend that you do not jailbreak or root your phone, which is the process of removing software restrictions and limitations imposed by the official operating system of your device. It could make your phone vulnerable to malware/viruses/malicious programs, compromise your phone’s security features and it could mean that our games won’t work properly or at all.
+        </p>
+
+        <p>The game does use third-party services that declare their Terms and Conditions.</p>
+        
+        <p>Link to Terms and Conditions of third-party service providers used by the game:</p>
+        <ul>
+            <li><a href="https://policies.google.com/terms" target="_blank">Google Play Services</a></li>
+            <li><a href="https://developers.google.com/admob/terms" target="_blank">AdMob</a></li>
+            <li><a href="https://unity3d.com/legal/terms-of-service" target="_blank">Unity</a></li>
+            <li><a href="https://gameanalytics.com/terms" target="_blank">GameAnalytics</a></li>
+        </ul>
+
+        <h2>Responsibilities</h2>
+        <p>
+            You should be aware that there are certain things that Salion Production will not take responsibility for. Certain functions of the game will require the game to have an active internet connection. The connection can be Wi-Fi or provided by your mobile network provider, but Salion Production cannot take responsibility for the game not working at full functionality if you don’t have access to Wi-Fi, and you don’t have any of your data allowance left.
+        </p>
+        <p>
+            If you’re using the game outside of an area with Wi-Fi, you should remember that the terms of the agreement with your mobile network provider will still apply. As a result, you may be charged by your mobile provider for the cost of data for the duration of the connection while accessing the game, or other third-party charges. In using the game, you’re accepting responsibility for any such charges, including roaming data charges if you use the game outside of your home territory (i.e. region or country) without turning off data roaming. If you are not the bill payer for the device on which you’re using the game, please be aware that we assume that you have received permission from the bill payer for using the game.
+        </p>
+        <p>
+            Along the same lines, Salion Production cannot always take responsibility for the way you use the game i.e. You need to make sure that your device stays charged – if it runs out of battery and you can’t turn it on to avail the Service, Salion Production cannot accept responsibility.
+        </p>
+
+        <h2>Updates and Termination</h2>
+        <p>
+            With respect to Salion Production’s responsibility for your use of the game, when you’re using the game, it’s important to bear in mind that although we endeavor to ensure that it is updated and correct at all times, we do rely on third parties to provide information to us so that we can make it available to you. Salion Production accepts no liability for any loss, direct or indirect, you experience as a result of relying wholly on this functionality of the game.
+        </p>
+        <p>
+            At some point, we may wish to update the game. The game is currently available on Android & iOS – the requirements for the both systems (and for any additional systems we decide to extend the availability of the game to) may change, and you’ll need to download the updates if you want to keep using the game. Salion Production does not promise that it will always update the game so that it is relevant to you and/or works with the Android & iOS version that you have installed on your device. However, you promise to always accept updates to the application when offered to you, we may also wish to stop providing the game, and may terminate use of it at any time without giving notice of termination to you. Unless we tell you otherwise, upon any termination, (a) the rights and licenses granted to you in these terms will end; (b) you must stop using the game, and (if needed) delete it from your device.
+        </p>
+
+        <h2>Changes to This Terms and Conditions</h2>
+        <p>
+            We may update our Terms and Conditions from time to time. Thus, you are advised to review this page periodically for any changes. We will notify you of any changes by posting the new Terms and Conditions on this page.
+        </p>
+
+        <h2>Contact Us</h2>
+        <p>
+            If you have any questions or suggestions about our Terms and Conditions, do not hesitate to contact us at: <a href="mailto:support@salion.games">support@salion.games</a>
+        </p>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Salion Games. All rights reserved.</p>
+        <br>
+        <p>
+            <a href="index.html">Home</a> | 
+            <a href="privacy.html">Privacy Policy</a> |
+            <a href="terms.html">Terms of Use</a>
+        </p>
+    </footer>
+
+</body>
+</html>
