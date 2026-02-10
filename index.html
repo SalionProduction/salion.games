@@ -3,10 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Salion Games</title>
+    <title>Salion Games | Balls Arena</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
-        /* --- BASIC RESET & STYLES --- */
+        /* --- GLOBAL STYLES (White Theme) --- */
         * {
             margin: 0;
             padding: 0;
@@ -15,212 +17,214 @@
 
         body {
             font-family: 'Poppins', sans-serif;
-            color: #333;
-            background-color: #ffffff;
+            background-color: #ffffff; /* White background */
+            color: #333333; /* Dark text for contrast */
             line-height: 1.6;
-        }
-
-        /* --- HEADER --- */
-        header {
-            padding: 20px 40px;
+            min-height: 100vh;
             display: flex;
+            flex-direction: column;
             align-items: center;
-            justify-content: center; /* Centered logo */
-            background-color: #fff;
-            /* Subtle shadow for separation */
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05); 
-            position: sticky;
-            top: 0;
-            z-index: 100;
+            justify-content: center; /* Center content vertically */
+            padding: 40px 20px;
         }
 
-        .logo {
-            font-size: 2rem; /* Big text */
-            font-weight: 700;
-            color: #000;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            text-decoration: none;
-        }
-
-        /* --- GAME SECTIONS --- */
+        /* --- CONTAINER --- */
         .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
+            width: 100%;
+            max-width: 500px;
+            text-align: center;
         }
 
-        .game-section {
+        /* --- HEADER / PROFILE SECTION --- */
+        .profile-section {
+            margin-bottom: 30px;
+        }
+
+        /* Logo styling (Top position) */
+        .game-icon {
+            width: 120px;
+            height: 120px;
+            border-radius: 28px; /* Smooth rounded corners */
+            object-fit: cover;
+            margin: 0 auto 20px; /* Centered with margin bottom */
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15); /* Soft shadow */
+            display: block;
+        }
+
+        /* Brand Name styling */
+        .brand-name {
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            color: #888;
+            text-transform: uppercase;
+            font-weight: 700;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: #000;
+        }
+
+        .bio {
+            font-size: 1rem;
+            color: #555;
+            margin-bottom: 30px;
+            padding: 0 10px;
+        }
+
+        /* --- LINKS SECTION --- */
+        .links-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            width: 100%;
+        }
+
+        /* Link Buttons (Dark on White theme for contrast) */
+        .link-btn {
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            padding: 80px 0;
-            gap: 50px;
-            min-height: 80vh; /* Takes up most of the screen */
-        }
-
-        /* This creates the "Zig-Zag" layout (Text-Image, then Image-Text) */
-        .game-section:nth-child(even) {
-            flex-direction: row-reverse;
-        }
-
-        .text-content {
-            flex: 1;
-        }
-
-        .image-content {
-            flex: 1;
-            display: flex;
             justify-content: center;
+            background-color: #111; /* Almost black buttons */
+            color: #fff;
+            text-decoration: none;
+            padding: 16px 20px;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            position: relative;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
 
-        /* Styling for the phone screenshots */
-        .phone-mockup {
-            width: 100%;
-            max-width: 350px; /* Typical phone width */
-            border-radius: 30px; /* Rounded corners like a phone */
-            box-shadow: 0 20px 40px rgba(0,0,0,0.2); /* Nice 3D shadow */
-            transition: transform 0.3s ease;
+        .link-btn:hover {
+            background-color: #333;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.2);
         }
 
-        .phone-mockup:hover {
-            transform: translateY(-10px); /* Floats up slightly on hover */
+        .link-btn i {
+            font-size: 1.3rem;
+            position: absolute;
+            left: 30px;
         }
 
-        h2 {
-            font-size: 3rem;
-            margin-bottom: 20px;
-            line-height: 1.2;
-        }
-
-        p {
-            font-size: 1.1rem;
-            color: #666;
-            margin-bottom: 30px;
-            max-width: 500px;
-        }
-
-        /* --- APP STORE BADGES --- */
+        /* --- STORE BUTTONS --- */
         .store-buttons {
             display: flex;
+            justify-content: center;
             gap: 15px;
+            margin-bottom: 30px;
             flex-wrap: wrap;
         }
 
-        .store-btn img {
-            height: 50px; /* Standard height for badges */
-            transition: opacity 0.2s;
+        .store-img {
+            height: 50px;
+            transition: transform 0.2s, opacity 0.2s;
+        }
+        
+        .store-img:hover {
+            opacity: 0.85;
+            transform: scale(1.02);
         }
 
-        .store-btn:hover img {
-            opacity: 0.8;
-        }
+        /* Social specific colors on hover (Optional) */
+        .youtube:hover { background-color: #ff0000; color: white; }
+        .instagram:hover { background-color: #E1306C; color: white; }
+        .tiktok:hover { background-color: #000000; color: #00f2ea; } /* TikTok effect */
 
         /* --- FOOTER --- */
         footer {
-            background-color: #f9f9f9;
-            text-align: center;
-            padding: 40px 20px;
-            margin-top: 50px;
+            margin-top: 60px;
+            font-size: 0.85rem;
+            color: #666;
             border-top: 1px solid #eee;
-            font-size: 0.9rem;
-            color: #888;
+            padding-top: 30px;
         }
 
-        footer a {
-            color: #333;
+        .footer-links {
+            margin-bottom: 15px;
+        }
+
+        .footer-links a {
+            color: #555;
             text-decoration: none;
-            margin: 0 10px;
+            margin: 0 8px;
+            font-weight: 500;
+            transition: color 0.2s;
         }
 
-        footer a:hover {
+        .footer-links a:hover {
+            color: #000;
             text-decoration: underline;
         }
 
-        /* --- MOBILE ADAPTATION --- */
-        @media (max-width: 768px) {
-            .game-section {
-                flex-direction: column-reverse !important; /* Image on top on mobile */
-                text-align: center;
-                padding: 40px 0;
-            }
-
-            .store-buttons {
-                justify-content: center;
-            }
-
-            h2 {
-                font-size: 2.5rem;
-            }
-            
-            p {
-                margin: 0 auto 30px auto;
-            }
+        .email-link {
+            color: #888;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 10px;
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <a href="#" class="logo">Salion</a>
-    </header>
+    <div class="container">
+        
+        <header class="profile-section">
+            <img src="img/balls-arena.png" alt="Balls Arena Icon" class="game-icon">
+            
+            <span class="brand-name">Salion Games</span>
+            
+            <h1>Balls Arena</h1>
+            <p class="bio">
+                Ready for some epic ball battles? ⚔️
+            </p>
+        </header>
 
-    <main class="container">
+        <div class="store-buttons">
+            <a href="https://apps.apple.com/us/app/balls-arena-battle/id6755978712" target="_blank">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg" alt="Download on the App Store" class="store-img">
+            </a>
+            <a href="https://play.google.com/store/apps/details?id=com.salion.ballsarena" target="_blank">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Get it on Google Play" class="store-img">
+            </a>
+        </div>
 
-        <section class="game-section" id="balls-arena">
-            <div class="text-content">
-                <h2>Balls Arena</h2>
-                <p>
-                    Enter the arena! Experience dynamic battles with unique ball characters. 
-                    Collect, upgrade, and defeat your opponents in this fast-paced strategy game. 
-                    Think Clash Royale, but with physics and style.
-                </p>
-                <div class="store-buttons">
-                    <a href="https://apps.apple.com/us/app/balls-arena-battle/id6755978712" class="store-btn" target="_blank">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg" alt="Download on the App Store">
-                    </a>
-                    <a href="https://play.google.com/store/apps/details?id=com.salion.ballsarena" class="store-btn" target="_blank">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Get it on Google Play">
-                    </a>
-                </div>
+        <div class="links-container">
+            <a href="https://youtube.com/@ballsarenagame" target="_blank" class="link-btn youtube">
+                <i class="fa-brands fa-youtube"></i>
+                YouTube
+            </a>
+
+            <a href="https://www.instagram.com/balls.arena" target="_blank" class="link-btn instagram">
+                <i class="fa-brands fa-instagram"></i>
+                Instagram
+            </a>
+
+            <a href="https://www.tiktok.com/@balls.arena.game" target="_blank" class="link-btn tiktok">
+                <i class="fa-brands fa-tiktok"></i>
+                TikTok
+            </a>
+        </div>
+
+        <footer>
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="privacy.html">Privacy Policy</a>
+                <a href="terms.html">Terms of Use</a>
+                <a href="support.html">Support</a>
             </div>
-            <div class="image-content">
-                <img src="img/balls-arena.png" alt="Balls Arena Gameplay" class="phone-mockup">
-            </div>
-        </section>
+            
+            <a href="mailto:support@salion.games" class="email-link">
+                support@salion.games
+            </a>
+            <p>&copy; 2026 Salion. All rights reserved.</p>
+        </footer>
 
-        <section class="game-section" id="super-impostor">
-            <div class="text-content">
-                <h2>Super Impostor</h2>
-                <p>
-                    Trust no one. Complete tasks, avoid suspicion, and outsmart your friends.
-                    A thrilling game of deduction and stealth tailored for mobile play.
-                </p>
-                <div class="store-buttons">
-                    <a href="https://play.google.com/store/apps/details?id=com.salion.superimpostor" class="store-btn" target="_blank">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Get it on Google Play">
-                    </a>
-                </div>
-            </div>
-            <div class="image-content">
-                <img src="img/super-impostor.png" alt="Balls Arena Gameplay" class="phone-mockup">
-            </div>
-        </section>
-
-    </main>
-
-    <footer>
-        <p>&copy; 2025 Salion Games. All rights reserved.</p>
-        <br>
-        <p>
-            <a href="index.html">Home</a> | 
-            <a href="privacy.html">Privacy Policy</a> |
-            <a href="terms.html">Terms of Use</a> |
-            <a href="contact.html">Contact</a>
-        </p>
-    </footer>
+    </div>
 
 </body>
 </html>
-
-
