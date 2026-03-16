@@ -1,0 +1,1144 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Саліонов А.А. — Вчитель інформатики · Ліцей №23</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #1F3153;
+  --navy-deep: #111b2e;
+  --navy-mid: #243a63;
+  --orange: #E95C11;
+  --orange-light: #ff7a3d;
+  --yellow: #FEBD1A;
+  --white: #ffffff;
+  --gray: #8a9bb5;
+  --light: #f4f6fa;
+  --card: #ffffff;
+  --text: #1a2540;
+  --text-muted: #5a6a85;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Manrope', sans-serif;
+  background: var(--white);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--navy-deep); }
+::-webkit-scrollbar-thumb { background: var(--orange); border-radius: 3px; }
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(17, 27, 46, 0.96);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(233,92,17,0.2);
+  padding: 0 60px;
+  display: flex; align-items: center; justify-content: space-between;
+  height: 64px;
+}
+.nav-logo {
+  font-family: 'Unbounded', sans-serif;
+  font-size: 14px; font-weight: 700;
+  color: var(--white);
+  display: flex; align-items: center; gap: 10px;
+}
+.nav-logo span { color: var(--orange); }
+.nav-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--orange);
+  animation: pulse 2s infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.8); }
+}
+.nav-links {
+  display: flex; gap: 32px; list-style: none;
+}
+.nav-links a {
+  font-size: 12px; font-weight: 600; letter-spacing: 1.5px;
+  text-transform: uppercase; color: rgba(255,255,255,0.6);
+  text-decoration: none; transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--orange); }
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  background: var(--navy-deep);
+  display: flex; align-items: center;
+  padding: 100px 60px 80px;
+  position: relative; overflow: hidden;
+}
+.hero-glow-1 {
+  position: absolute; top: -200px; right: -100px;
+  width: 700px; height: 700px;
+  background: radial-gradient(circle, rgba(233,92,17,0.14) 0%, transparent 65%);
+  pointer-events: none;
+}
+.hero-glow-2 {
+  position: absolute; bottom: -150px; left: 100px;
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(254,189,26,0.08) 0%, transparent 65%);
+  pointer-events: none;
+}
+.hero-grid {
+  position: absolute; inset: 0;
+  background-image: linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+}
+.hero-content {
+  position: relative; z-index: 2;
+  max-width: 1200px; margin: 0 auto; width: 100%;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+}
+.hero-tag {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-size: 11px; font-weight: 700; letter-spacing: 4px;
+  text-transform: uppercase; color: var(--orange);
+  margin-bottom: 28px;
+}
+.hero-tag::before { content: ''; width: 28px; height: 2px; background: var(--orange); display: block; }
+.hero-name {
+  font-family: 'Unbounded', sans-serif;
+  font-size: clamp(36px, 5vw, 64px);
+  font-weight: 900; line-height: 1.0;
+  letter-spacing: -2px; color: var(--white);
+  margin-bottom: 8px;
+}
+.hero-name .accent { color: var(--orange); }
+.hero-role {
+  font-size: 14px; font-weight: 500;
+  letter-spacing: 2px; text-transform: uppercase;
+  color: var(--gray); margin-bottom: 40px;
+}
+.hero-desc {
+  font-size: 16px; font-weight: 400;
+  color: rgba(255,255,255,0.65);
+  line-height: 1.75; margin-bottom: 40px;
+  max-width: 480px;
+}
+.hero-credo {
+  font-size: 14px; font-style: italic;
+  color: rgba(255,255,255,0.35);
+  border-left: 2px solid var(--orange);
+  padding-left: 16px; margin-bottom: 44px;
+}
+.hero-credo strong { color: var(--yellow); font-style: normal; font-weight: 600; }
+.hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+.btn-primary {
+  background: var(--orange); color: white;
+  padding: 14px 28px; border-radius: 8px;
+  font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
+  text-decoration: none; display: inline-block;
+  transition: all 0.25s; border: 2px solid var(--orange);
+}
+.btn-primary:hover { background: var(--orange-light); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(233,92,17,0.35); }
+.btn-outline {
+  background: transparent; color: white;
+  padding: 14px 28px; border-radius: 8px;
+  font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
+  text-decoration: none; display: inline-block;
+  border: 2px solid rgba(255,255,255,0.2);
+  transition: all 0.25s;
+}
+.btn-outline:hover { border-color: var(--orange); color: var(--orange); }
+
+.hero-stats {
+  display: flex; flex-direction: column; gap: 20px;
+}
+.stat-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px; padding: 24px 28px;
+  position: relative; overflow: hidden;
+  transition: all 0.3s;
+}
+.stat-card:hover { border-color: rgba(233,92,17,0.3); transform: translateX(4px); }
+.stat-card::before {
+  content: ''; position: absolute;
+  left: 0; top: 0; bottom: 0; width: 3px;
+}
+.stat-card:nth-child(1)::before { background: var(--orange); }
+.stat-card:nth-child(2)::before { background: var(--yellow); }
+.stat-card:nth-child(3)::before { background: linear-gradient(180deg, var(--orange), var(--yellow)); }
+.stat-card:nth-child(4)::before { background: var(--orange); }
+.stat-num {
+  font-family: 'Unbounded', sans-serif;
+  font-size: 36px; font-weight: 900;
+  color: var(--white); line-height: 1;
+  margin-bottom: 4px;
+}
+.stat-num span { color: var(--orange); }
+.stat-label { font-size: 12px; color: var(--gray); font-weight: 500; }
+
+/* ── SECTION SHARED ── */
+section { padding: 100px 60px; }
+.container { max-width: 1200px; margin: 0 auto; }
+
+.section-tag {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-size: 10px; font-weight: 700; letter-spacing: 4px;
+  text-transform: uppercase; color: var(--orange);
+  margin-bottom: 12px;
+}
+.section-tag::before { content: ''; width: 20px; height: 2px; background: var(--orange); display: block; }
+.section-title {
+  font-family: 'Unbounded', sans-serif;
+  font-size: clamp(26px, 3.5vw, 40px);
+  font-weight: 700; letter-spacing: -1px;
+  color: var(--navy); margin-bottom: 48px; line-height: 1.2;
+}
+.section-title.white { color: var(--white); }
+
+/* ── TOPIC SECTION ── */
+.topic-section { background: var(--light); }
+.topic-card {
+  background: var(--navy-deep);
+  border-radius: 20px; padding: 48px;
+  position: relative; overflow: hidden;
+  margin-bottom: 32px;
+}
+.topic-card::before {
+  content: '«';
+  position: absolute; top: -20px; right: 30px;
+  font-family: 'Unbounded', sans-serif; font-size: 180px;
+  color: rgba(233,92,17,0.06); line-height: 1; pointer-events: none;
+}
+.topic-card p {
+  font-size: clamp(18px, 2vw, 24px);
+  font-weight: 600; color: var(--white);
+  line-height: 1.65; font-style: italic;
+  position: relative; z-index: 1;
+}
+.topic-card p em { color: var(--yellow); font-style: normal; }
+.topic-pillars { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.pillar {
+  background: var(--white); border-radius: 14px;
+  padding: 28px 24px; border-bottom: 3px solid transparent;
+  transition: all 0.3s; box-shadow: 0 2px 16px rgba(31,49,83,0.06);
+}
+.pillar:nth-child(1) { border-bottom-color: var(--orange); }
+.pillar:nth-child(2) { border-bottom-color: var(--yellow); }
+.pillar:nth-child(3) { border-bottom-color: var(--navy); }
+.pillar:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(31,49,83,0.12); }
+.pillar-icon { font-size: 32px; margin-bottom: 14px; display: block; }
+.pillar h3 { font-size: 15px; font-weight: 800; color: var(--navy); margin-bottom: 8px; }
+.pillar p { font-size: 13px; color: var(--text-muted); line-height: 1.6; }
+
+/* ── ACHIEVEMENTS ── */
+.achievements-section { background: var(--navy-deep); }
+.ach-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.ach-card {
+  background: rgba(255,255,255,0.045);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px; padding: 28px 24px;
+  position: relative; overflow: hidden;
+  transition: all 0.3s; cursor: default;
+}
+.ach-card:hover {
+  background: rgba(255,255,255,0.075);
+  border-color: rgba(233,92,17,0.3);
+  transform: translateY(-4px);
+}
+.ach-card::after {
+  content: ''; position: absolute;
+  top: 0; left: 0; right: 0; height: 3px;
+}
+.ach-card:nth-child(1)::after { background: linear-gradient(90deg, #E95C11, #ff9a5c); }
+.ach-card:nth-child(2)::after { background: linear-gradient(90deg, #FEBD1A, #ffe07a); }
+.ach-card:nth-child(3)::after { background: linear-gradient(90deg, #1F3153, #3a5fa0); }
+.ach-card:nth-child(4)::after { background: linear-gradient(90deg, #E95C11, #FEBD1A); }
+.ach-card:nth-child(5)::after { background: linear-gradient(90deg, #FEBD1A, #E95C11); }
+.ach-card:nth-child(6)::after { background: linear-gradient(90deg, #1F3153, #E95C11); }
+.ach-icon { font-size: 28px; margin-bottom: 14px; display: block; }
+.ach-title { font-size: 14px; font-weight: 800; color: var(--white); margin-bottom: 10px; line-height: 1.3; }
+.ach-desc { font-size: 12.5px; color: rgba(255,255,255,0.55); line-height: 1.6; }
+.ach-badge {
+  display: inline-block; margin-top: 14px;
+  background: rgba(233,92,17,0.15); color: var(--orange);
+  font-size: 10px; font-weight: 700; letter-spacing: 1px;
+  padding: 4px 10px; border-radius: 20px; border: 1px solid rgba(233,92,17,0.25);
+}
+
+/* ── METHODS ── */
+.methods-section { background: var(--light); }
+.methods-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.method-card {
+  background: var(--white); border-radius: 16px;
+  padding: 28px 24px;
+  box-shadow: 0 2px 16px rgba(31,49,83,0.06);
+  border-left: 3px solid transparent;
+  transition: all 0.3s;
+}
+.method-card:nth-child(1) { border-left-color: var(--orange); }
+.method-card:nth-child(2) { border-left-color: var(--yellow); }
+.method-card:nth-child(3) { border-left-color: var(--navy); }
+.method-card:nth-child(4) { border-left-color: var(--yellow); }
+.method-card:nth-child(5) { border-left-color: var(--orange); }
+.method-card:nth-child(6) { border-left-color: var(--navy); }
+.method-card:hover { transform: translateY(-3px); box-shadow: 0 10px 28px rgba(31,49,83,0.1); }
+.method-icon { font-size: 28px; margin-bottom: 14px; display: block; }
+.method-title { font-size: 14px; font-weight: 800; color: var(--navy); margin-bottom: 8px; }
+.method-desc { font-size: 12.5px; color: var(--text-muted); line-height: 1.6; }
+
+/* ── COURSES ── */
+.courses-section { background: var(--navy-deep); }
+.courses-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin-bottom: 28px; }
+.course-card {
+  background: rgba(255,255,255,0.045);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 14px; padding: 22px 24px;
+  display: flex; gap: 18px; align-items: flex-start;
+  transition: all 0.3s;
+}
+.course-card:hover { border-color: rgba(233,92,17,0.25); background: rgba(255,255,255,0.065); }
+.course-num {
+  font-family: 'Unbounded', sans-serif;
+  font-size: 28px; font-weight: 900; color: var(--orange);
+  opacity: 0.25; line-height: 1; flex-shrink: 0;
+  width: 40px; text-align: center;
+}
+.course-content {}
+.course-date {
+  font-size: 10px; font-weight: 700; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--orange);
+  margin-bottom: 5px; display: flex; align-items: center; gap: 8px;
+}
+.course-hours {
+  background: var(--orange); color: white;
+  font-size: 9px; font-weight: 800; padding: 2px 8px;
+  border-radius: 20px;
+}
+.course-name { font-size: 13px; font-weight: 700; color: var(--white); margin-bottom: 4px; line-height: 1.4; }
+.course-org { font-size: 11px; color: var(--gray); }
+.total-strip {
+  background: linear-gradient(135deg, var(--orange), #c0490d);
+  border-radius: 14px; padding: 24px 32px;
+  display: flex; align-items: center; gap: 24px;
+}
+.total-num {
+  font-family: 'Unbounded', sans-serif;
+  font-size: 52px; font-weight: 900; color: var(--yellow); line-height: 1;
+}
+.total-text { font-size: 15px; color: rgba(255,255,255,0.85); font-weight: 500; line-height: 1.5; }
+
+/* ── METHODICAL ── */
+.methodical-section { background: var(--light); }
+.methodical-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.methodical-col {}
+.col-heading {
+  font-size: 11px; font-weight: 700; letter-spacing: 3px;
+  text-transform: uppercase; margin-bottom: 16px;
+  display: flex; align-items: center; gap: 8px;
+}
+.col-heading::before { content: ''; width: 20px; height: 2px; display: block; }
+.col-heading.orange { color: var(--orange); }
+.col-heading.orange::before { background: var(--orange); }
+.col-heading.navy { color: var(--navy); }
+.col-heading.navy::before { background: var(--navy); }
+.event-list { display: flex; flex-direction: column; gap: 12px; }
+.event-item {
+  background: var(--white); border-radius: 12px;
+  padding: 18px 20px; display: flex; gap: 14px;
+  align-items: flex-start; box-shadow: 0 2px 10px rgba(31,49,83,0.06);
+  transition: all 0.2s;
+}
+.event-item:hover { transform: translateX(4px); box-shadow: 0 4px 18px rgba(31,49,83,0.1); }
+.event-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+.event-text { font-size: 13px; color: var(--text-muted); line-height: 1.55; }
+.event-text strong { color: var(--navy); font-weight: 700; display: block; margin-bottom: 3px; }
+
+/* ── FIMA ── */
+.fima-section { background: var(--navy-deep); }
+.fima-inner {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;
+}
+.fima-visual {
+  background: linear-gradient(135deg, rgba(233,92,17,0.1), rgba(254,189,26,0.05));
+  border: 1px solid rgba(233,92,17,0.2);
+  border-radius: 24px; padding: 48px;
+  text-align: center; position: relative; overflow: hidden;
+}
+.fima-avatar {
+  font-size: 80px; display: block; margin-bottom: 20px;
+  animation: float 3s ease-in-out infinite;
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+.fima-name {
+  font-family: 'Unbounded', sans-serif;
+  font-size: 32px; font-weight: 900;
+  color: var(--white); margin-bottom: 8px;
+}
+.fima-name span { color: var(--orange); }
+.fima-subtitle { font-size: 13px; color: var(--gray); letter-spacing: 2px; text-transform: uppercase; }
+.fima-status {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(39, 174, 96, 0.15); color: #27ae60;
+  border: 1px solid rgba(39,174,96,0.3);
+  border-radius: 20px; padding: 6px 14px;
+  font-size: 11px; font-weight: 700; letter-spacing: 1px;
+  margin-top: 16px;
+}
+.fima-status::before {
+  content: ''; width: 7px; height: 7px; border-radius: 50%;
+  background: #27ae60; display: block;
+  animation: pulse 1.5s infinite;
+}
+.fima-content {}
+.fima-desc {
+  font-size: 16px; color: rgba(255,255,255,0.7);
+  line-height: 1.75; margin-bottom: 32px;
+}
+.fima-features { display: flex; flex-direction: column; gap: 14px; }
+.fima-feat {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 12px; padding: 16px 20px;
+  display: flex; gap: 14px; align-items: center;
+}
+.fima-feat-icon { font-size: 20px; flex-shrink: 0; }
+.fima-feat-text { font-size: 13px; color: rgba(255,255,255,0.7); line-height: 1.5; }
+.fima-feat-text strong { color: var(--white); font-weight: 700; }
+
+/* ── CLUB ── */
+.club-section { background: var(--light); }
+.club-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+.club-desc { font-size: 16px; color: var(--text-muted); line-height: 1.75; margin-bottom: 28px; }
+.club-tags { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 32px; }
+.tag {
+  background: var(--navy); color: white;
+  font-size: 12px; font-weight: 600; padding: 8px 16px;
+  border-radius: 20px; letter-spacing: 0.5px;
+}
+.tag.orange { background: var(--orange); }
+.tag.yellow { background: var(--yellow); color: var(--navy); }
+.club-results { display: flex; flex-direction: column; gap: 14px; }
+.result-item {
+  background: var(--white); border-radius: 12px;
+  padding: 18px 22px; display: flex; gap: 14px; align-items: center;
+  box-shadow: 0 2px 10px rgba(31,49,83,0.06);
+  border-left: 3px solid var(--orange);
+  transition: all 0.2s;
+}
+.result-item:hover { transform: translateX(4px); }
+.result-emoji { font-size: 20px; flex-shrink: 0; }
+.result-text { font-size: 13px; color: var(--text-muted); line-height: 1.5; }
+.result-text strong { color: var(--navy); font-weight: 700; }
+
+/* ── PORTFOLIO ── */
+.portfolio-section { background: var(--navy-deep); }
+.portfolio-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 32px; }
+.portfolio-card {
+  background: rgba(255,255,255,0.045);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px; overflow: hidden;
+  transition: all 0.3s;
+}
+.portfolio-card:hover { transform: translateY(-5px); border-color: rgba(233,92,17,0.3); box-shadow: 0 12px 36px rgba(233,92,17,0.12); }
+.portfolio-thumb {
+  height: 140px; display: flex; align-items: center; justify-content: center;
+  font-size: 48px; position: relative;
+}
+.portfolio-thumb.t1 { background: linear-gradient(135deg, #1F3153, #2e4d82); }
+.portfolio-thumb.t2 { background: linear-gradient(135deg, #c0490d, #E95C11); }
+.portfolio-thumb.t3 { background: linear-gradient(135deg, #c4920a, #FEBD1A); }
+.portfolio-thumb.t4 { background: linear-gradient(135deg, #1F3153, #E95C11); }
+.portfolio-thumb.t5 { background: linear-gradient(135deg, #2e4d82, #c4920a); }
+.portfolio-thumb.t6 { background: linear-gradient(135deg, #c0490d, #c4920a); }
+.portfolio-body { padding: 20px 22px; }
+.portfolio-type {
+  font-size: 10px; font-weight: 700; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--orange); margin-bottom: 6px;
+}
+.portfolio-title { font-size: 13px; font-weight: 700; color: var(--white); margin-bottom: 6px; line-height: 1.4; }
+.portfolio-desc { font-size: 11.5px; color: rgba(255,255,255,0.5); line-height: 1.55; }
+
+.portfolio-contact {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(233,92,17,0.22);
+  border-radius: 16px; padding: 28px 36px;
+  display: flex; align-items: center; gap: 24px; flex-wrap: wrap;
+}
+.portfolio-contact-icon { font-size: 36px; flex-shrink: 0; }
+.portfolio-contact-text { flex: 1; min-width: 220px; }
+.portfolio-contact-title { font-size: 16px; font-weight: 800; color: var(--white); margin-bottom: 6px; }
+.portfolio-contact-desc { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.6; }
+.portfolio-contact-btn {
+  flex-shrink: 0; background: var(--orange); color: white;
+  padding: 14px 24px; border-radius: 10px;
+  font-size: 13px; font-weight: 700; text-decoration: none;
+  transition: all 0.25s; white-space: nowrap;
+}
+.portfolio-contact-btn:hover { background: var(--orange-light); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(233,92,17,0.35); }
+
+/* ── ABOUT ── */
+.about-section { background: var(--light); }
+.about-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+.about-text { font-size: 16px; color: var(--text-muted); line-height: 1.8; margin-bottom: 24px; }
+.about-meta { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.about-meta-item {
+  background: var(--white); border-radius: 12px;
+  padding: 18px 20px; box-shadow: 0 2px 10px rgba(31,49,83,0.06);
+}
+.about-meta-label { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--orange); margin-bottom: 5px; }
+.about-meta-value { font-size: 14px; font-weight: 700; color: var(--navy); }
+.timeline { position: relative; }
+.timeline::before { content: ''; position: absolute; left: 18px; top: 0; bottom: 0; width: 2px; background: linear-gradient(180deg, var(--orange), var(--yellow)); }
+.tl-item { display: flex; gap: 28px; margin-bottom: 28px; position: relative; }
+.tl-dot {
+  width: 38px; height: 38px; border-radius: 50%;
+  background: var(--navy-deep); border: 2px solid var(--orange);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px; flex-shrink: 0; position: relative; z-index: 1;
+}
+.tl-content {}
+.tl-year { font-size: 11px; font-weight: 700; letter-spacing: 2px; color: var(--orange); margin-bottom: 4px; }
+.tl-title { font-size: 14px; font-weight: 700; color: var(--navy); margin-bottom: 4px; }
+.tl-desc { font-size: 12.5px; color: var(--text-muted); line-height: 1.55; }
+
+/* ── FOOTER ── */
+footer {
+  background: var(--navy-deep);
+  border-top: 1px solid rgba(233,92,17,0.2);
+  padding: 48px 60px 32px;
+}
+.footer-inner {
+  max-width: 1200px; margin: 0 auto;
+  display: flex; justify-content: space-between; align-items: center;
+  padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.06);
+  margin-bottom: 24px;
+}
+.footer-logo {
+  font-family: 'Unbounded', sans-serif;
+  font-size: 16px; font-weight: 700; color: var(--white);
+}
+.footer-logo span { color: var(--orange); }
+.footer-nav { display: flex; gap: 28px; }
+.footer-nav a { font-size: 12px; color: var(--gray); text-decoration: none; font-weight: 500; transition: color 0.2s; }
+.footer-nav a:hover { color: var(--orange); }
+.footer-bottom { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+.footer-copy { font-size: 12px; color: rgba(255,255,255,0.25); }
+.footer-credo { font-size: 12px; font-style: italic; color: rgba(255,255,255,0.2); }
+.footer-credo strong { color: rgba(254,189,26,0.5); font-style: normal; }
+
+/* ── ANIMATIONS ── */
+.fade-up {
+  opacity: 0; transform: translateY(30px);
+  transition: all 0.6s ease;
+}
+.fade-up.visible { opacity: 1; transform: translateY(0); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  nav { padding: 0 20px; }
+  .nav-links { display: none; }
+  section { padding: 60px 20px; }
+  .hero { padding: 80px 20px 60px; }
+  .hero-content { grid-template-columns: 1fr; gap: 40px; }
+  .topic-pillars, .ach-grid, .methods-grid, .portfolio-grid { grid-template-columns: 1fr; }
+  .methodical-grid, .fima-inner, .club-inner, .about-inner, .courses-grid { grid-template-columns: 1fr; }
+  footer { padding: 40px 20px 24px; }
+  .footer-inner { flex-direction: column; gap: 20px; text-align: center; }
+  .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <div class="nav-dot"></div>
+    Саліонов <span>А.А.</span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#topic">Тема</a></li>
+    <li><a href="#achievements">Досягнення</a></li>
+    <li><a href="#methods">Методи</a></li>
+    <li><a href="#courses">Курси</a></li>
+    <li><a href="#fima">Фіма</a></li>
+    <li><a href="#club">Гурток</a></li>
+    <li><a href="#portfolio">Портфоліо</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-glow-1"></div>
+  <div class="hero-glow-2"></div>
+  <div class="hero-content">
+    <div class="hero-left fade-up">
+      <div class="hero-tag">Дніпровський ліцей № 23</div>
+      <div class="hero-name">САЛІОНОВ<br><span class="accent">АНДРІЙ</span><br>АНДРІЙОВИЧ</div>
+      <div class="hero-role">Вчитель інформатики · 2024–2026</div>
+      <div class="hero-desc">
+        Перетворюю уроки інформатики на справжню IT-лабораторію — де учні не слухають про код, а пишуть його. Де результат навчання — це готовий цифровий продукт, а не просто оцінка в журналі.
+      </div>
+      <div class="hero-credo">«Майбутнє будується нашими діями» — <strong>педагогічне кредо</strong></div>
+      <div class="hero-btns">
+        <a href="#achievements" class="btn-primary">Досягнення учнів</a>
+        <a href="#portfolio" class="btn-outline">Портфоліо матеріалів</a>
+      </div>
+    </div>
+    <div class="hero-stats fade-up">
+      <div class="stat-card">
+        <div class="stat-num">153<span>год</span></div>
+        <div class="stat-label">підвищення кваліфікації · 6 сертифікатів</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num"><span>#1</span> Дніпро</div>
+        <div class="stat-label">European Code Week 2024 · ліцей №23</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">ACM<span> ICPC</span></div>
+        <div class="stat-label">Фінал України · перша участь учнів</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">🤖 <span>Фіма</span></div>
+        <div class="stat-label">AI-асистент ліцею · доступний 24/7</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TOPIC -->
+<section class="topic-section" id="topic">
+  <div class="container">
+    <div class="section-tag">Методична тема</div>
+    <div class="section-title">Над чим я працюю</div>
+    <div class="topic-card fade-up">
+      <p>«Проєктний підхід як засіб формування <em>цифрової компетентності учнів</em>:<br>від засвоєння теорії до створення власного продукту»</p>
+    </div>
+    <div class="topic-pillars">
+      <div class="pillar fade-up">
+        <span class="pillar-icon">🔄</span>
+        <h3>Теорія → Продукт</h3>
+        <p>Учень не отримує оцінку за знання — він іде з уроку з готовим цифровим продуктом: грою, програмою або веб-сторінкою.</p>
+      </div>
+      <div class="pillar fade-up">
+        <span class="pillar-icon">🎮</span>
+        <h3>Проєктне навчання</h3>
+        <p>Кожна тема — це проєкт. Учні планують, пишуть код, тестують і презентують результат, як справжні розробники.</p>
+      </div>
+      <div class="pillar fade-up">
+        <span class="pillar-icon">💡</span>
+        <h3>Цифрові компетентності</h3>
+        <p>Unity, Python, Visual Studio, ChatGPT — реальні інструменти IT-індустрії адаптовані для шкільного курсу.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ACHIEVEMENTS -->
+<section class="achievements-section" id="achievements">
+  <div class="container">
+    <div class="section-tag">Результати</div>
+    <div class="section-title white">Досягнення учнів</div>
+    <div class="ach-grid">
+      <div class="ach-card fade-up">
+        <span class="ach-icon">🏆</span>
+        <div class="ach-title">ACM ICPC</div>
+        <div class="ach-desc">Обласний тур та Фінал України — перша участь учнів на найпрестижнішому змаганні з програмування у світі. Гідний виступ та безцінний досвід.</div>
+        <span class="ach-badge">Міжнародний рівень</span>
+      </div>
+      <div class="ach-card fade-up">
+        <span class="ach-icon">🥉</span>
+        <div class="ach-title">3 місце · Олімпіада з програмування</div>
+        <div class="ach-desc">Учень 7-го класу змагався серед 8-класників — і взяв бронзу. До цього не програмував взагалі. Всього навчився зі мною в школі. Також участь в обласному турі.</div>
+        <span class="ach-badge">Міський рівень</span>
+      </div>
+      <div class="ach-card fade-up">
+        <span class="ach-icon">🌍</span>
+        <div class="ach-title">European Code Week</div>
+        <div class="ach-desc">2024 рік — 1 місце по Дніпру. У 2025 році конкуренція суттєво зросла — зайняли 4 місце. Плануємо повернути першість у 2026.</div>
+        <span class="ach-badge">Загальноєвропейський</span>
+      </div>
+      <div class="ach-card fade-up">
+        <span class="ach-icon">🥈</span>
+        <div class="ach-title">Олімпіада з офісного програмування</div>
+        <div class="ach-desc">Двоє учнів здобули 2-ге місце, ще двоє — 3-тє місце на обласному рівні. Стабільний результат і зростаючий склад команди.</div>
+        <span class="ach-badge">Обласний рівень</span>
+      </div>
+      <div class="ach-card fade-up">
+        <span class="ach-icon">📚</span>
+        <div class="ach-title">Coding Club · Гурток програмування</div>
+        <div class="ach-desc">Відкрив та веду позаурочний гурток для тих, кому одного уроку мало. Алгоритми, Python, Unity — глибше й швидше за шкільну програму.</div>
+        <span class="ach-badge">Позаурочна діяльність</span>
+      </div>
+      <div class="ach-card fade-up">
+        <span class="ach-icon">🤖</span>
+        <div class="ach-title">Чат-бот «Фіма» для ліцею</div>
+        <div class="ach-desc">Власний AI-проєкт — асистент ліцею, який відповідає на питання учнів, батьків і вчителів цілодобово. Розроблений разом з учнями як реальний продукт.</div>
+        <span class="ach-badge">Власний проєкт</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- METHODS -->
+<section class="methods-section" id="methods">
+  <div class="container">
+    <div class="section-tag">Педагогічна практика</div>
+    <div class="section-title">Підходи та методи навчання</div>
+    <div class="methods-grid">
+      <div class="method-card fade-up">
+        <span class="method-icon">🎯</span>
+        <div class="method-title">Практико-орієнтований підхід</div>
+        <div class="method-desc">Замість «вивчи й здай» — «зроби й покажи». Учень виходить з уроку з готовим цифровим результатом. Навчання = виробництво реального продукту.</div>
+      </div>
+      <div class="method-card fade-up">
+        <span class="method-icon">🎮</span>
+        <div class="method-title">Unity + C# для вивчення ООП</div>
+        <div class="method-desc">Об'єктно-орієнтоване програмування через створення ігор — найефективніший спосіб пояснити класи, об'єкти та методи підліткам. Вчимося граючи.</div>
+      </div>
+      <div class="method-card fade-up">
+        <span class="method-icon">🐍</span>
+        <div class="method-title">Python та алгоритмізація</div>
+        <div class="method-desc">Від базових алгоритмів до Python Turtle. Авторські практичні роботи, структурне програмування, власні програми як результат кожного модуля.</div>
+      </div>
+      <div class="method-card fade-up">
+        <span class="method-icon">🧠</span>
+        <div class="method-title">Генеративний ШІ у проєктах</div>
+        <div class="method-desc">ChatGPT, Midjourney, DALL-E — не як іграшки, а як інструменти. Учні генерують графіку, оптимізують код та генерують ідеї для своїх проєктів.</div>
+      </div>
+      <div class="method-card fade-up">
+        <span class="method-icon">🔀</span>
+        <div class="method-title">Диференціація через ШІ</div>
+        <div class="method-desc">Кожен учень — різний. Використання ШІ-інструментів дозволяє адаптувати завдання під рівень кожного без додаткового навантаження на вчителя.</div>
+      </div>
+      <div class="method-card fade-up">
+        <span class="method-icon">🌐</span>
+        <div class="method-title">Цифрове портфоліо онлайн</div>
+        <div class="method-desc">Усі матеріали, гайди, розробки та практичні роботи — відкрито на salion.games/lyceum23.html. Учні мають доступ 24/7, батьки бачать підхід, колеги можуть запозичити.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COURSES -->
+<section class="courses-section" id="courses">
+  <div class="container">
+    <div class="section-tag">Самоосвіта</div>
+    <div class="section-title white">Підвищення кваліфікації</div>
+    <div class="courses-grid">
+      <div class="course-card fade-up">
+        <div class="course-num">01</div>
+        <div class="course-content">
+          <div class="course-date">Грудень 2024 <span class="course-hours">30 год</span></div>
+          <div class="course-name">Освітній процес у другому циклі базової середньої освіти</div>
+          <div class="course-org">ДАНО · ДН 41682253/7668</div>
+        </div>
+      </div>
+      <div class="course-card fade-up">
+        <div class="course-num">02</div>
+        <div class="course-content">
+          <div class="course-date">Листопад 2025 <span class="course-hours">30 год</span></div>
+          <div class="course-name">Психологічний супровід особистості в умовах воєнного стану</div>
+          <div class="course-org">ДАНО · ДН 41682253/33165</div>
+        </div>
+      </div>
+      <div class="course-card fade-up">
+        <div class="course-num">03</div>
+        <div class="course-content">
+          <div class="course-date">Листопад 2025 <span class="course-hours">30 год</span></div>
+          <div class="course-name">Структурне програмування мовою Python</div>
+          <div class="course-org">ДАНО · ДН 41682253/33413</div>
+        </div>
+      </div>
+      <div class="course-card fade-up">
+        <div class="course-num">04</div>
+        <div class="course-content">
+          <div class="course-date">Грудень 2025 <span class="course-hours">30 год</span></div>
+          <div class="course-name">Сучасні підходи до навчання та планування освітнього процесу в НУШ</div>
+          <div class="course-org">ДАНО · ДН 41682253/37635</div>
+        </div>
+      </div>
+      <div class="course-card fade-up">
+        <div class="course-num">05</div>
+        <div class="course-content">
+          <div class="course-date">15 грудня 2025 <span class="course-hours">3 год</span></div>
+          <div class="course-name">Штучний інтелект у креативних індустріях</div>
+          <div class="course-org">ДІЯ Освіта · #C0095761688</div>
+        </div>
+      </div>
+      <div class="course-card fade-up">
+        <div class="course-num">06</div>
+        <div class="course-content">
+          <div class="course-date">Січень 2026 <span class="course-hours">30 год</span></div>
+          <div class="course-name">Інклюзивне навчання: технології педагогічної підтримки</div>
+          <div class="course-org">ДАНО · ДН 41682253/602</div>
+        </div>
+      </div>
+    </div>
+    <div class="total-strip fade-up">
+      <div class="total-num">153</div>
+      <div class="total-text">академічні години підвищення кваліфікації<br>за 2024–2026 роки · 6 сертифікатів · постійне фахове зростання</div>
+    </div>
+  </div>
+</section>
+
+<!-- METHODICAL -->
+<section class="methodical-section" id="methodical">
+  <div class="container">
+    <div class="section-tag">Методична робота</div>
+    <div class="section-title">Наукова та методична діяльність</div>
+    <div class="methodical-grid">
+      <div class="methodical-col">
+        <div class="col-heading orange">Участь у заходах</div>
+        <div class="event-list">
+          <div class="event-item fade-up">
+            <span class="event-icon">🎤</span>
+            <div class="event-text">
+              <strong>Конференція як спікер · міський рівень</strong>
+              «Трансформація шкільного курсу інформатики через впровадження стандартів IT-індустрії та проєктного підходу»
+            </div>
+          </div>
+          <div class="event-item fade-up">
+            <span class="event-icon">🏫</span>
+            <div class="event-text">
+              <strong>Виступ на засіданні педради</strong>
+              «Використання ШІ для диференціації навчання» — практичні кейси та інструменти
+            </div>
+          </div>
+          <div class="event-item fade-up">
+            <span class="event-icon">📋</span>
+            <div class="event-text">
+              <strong>Методична розробка відкритого уроку</strong>
+              «Використання штучного інтелекту в проєктній діяльності учнів 8-х класів»
+            </div>
+          </div>
+          <div class="event-item fade-up">
+            <span class="event-icon">👁</span>
+            <div class="event-text">
+              <strong>Відкриті уроки для колег</strong>
+              Демонстрація практико-орієнтованої методики — від постановки задачі до готового продукту
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="methodical-col">
+        <div class="col-heading navy">Публікації та матеріали</div>
+        <div class="event-list">
+          <div class="event-item fade-up">
+            <span class="event-icon">📊</span>
+            <div class="event-text">
+              <strong>Цикл презентацій до курсу «Сучасні технології»</strong>
+              «Основи GameDev», «Вступ до Python», «Кібербезпека та цифрова гігієна»
+            </div>
+          </div>
+          <div class="event-item fade-up">
+            <span class="event-icon">📖</span>
+            <div class="event-text">
+              <strong>Кейс-стаді</strong>
+              «Шлях від IT до викладання: адаптація Unity та Visual Studio у шкільному курсі інформатики»
+            </div>
+          </div>
+          <div class="event-item fade-up">
+            <span class="event-icon">📌</span>
+            <div class="event-text">
+              <strong>Інструктивно-методичний матеріал</strong>
+              «Алгоритм створення власного кросплатформеного проєкту» — гайд для учнів
+            </div>
+          </div>
+          <div class="event-item fade-up">
+            <span class="event-icon">🎮</span>
+            <div class="event-text">
+              <strong>Авторські практичні роботи</strong>
+              «Графічні об'єкти кодом — Python Turtle» та «Базова механіка гри в Unity»
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FIMA -->
+<section class="fima-section" id="fima">
+  <div class="container">
+    <div class="section-tag">Власний проєкт</div>
+    <div class="section-title white">Чат-бот «Фіма»</div>
+    <div class="fima-inner">
+      <div class="fima-visual fade-up">
+        <span class="fima-avatar">🤖</span>
+        <div class="fima-name">Фі<span>ма</span></div>
+        <div class="fima-subtitle">AI-асистент · Ліцей №23</div>
+        <div class="fima-status">Онлайн 24/7</div>
+      </div>
+      <div class="fima-content fade-up">
+        <div class="fima-desc">
+          Фіма — це перший крок до цифрового середовища ліцею. Власний AI-асистент, розроблений вчителем інформатики, який цілодобово відповідає на питання усіх учасників освітнього процесу — без очікування і зайвих дзвінків.
+        </div>
+        <div class="fima-features">
+          <div class="fima-feat">
+            <span class="fima-feat-icon">👨‍🎓</span>
+            <div class="fima-feat-text"><strong>Для учнів</strong> — розклад, дедлайни, відповіді на питання про навчання в будь-який час доби</div>
+          </div>
+          <div class="fima-feat">
+            <span class="fima-feat-icon">👨‍👩‍👧</span>
+            <div class="fima-feat-text"><strong>Для батьків</strong> — інформація про ліцей, події, контакти без дзвінків та очікування</div>
+          </div>
+          <div class="fima-feat">
+            <span class="fima-feat-icon">👩‍🏫</span>
+            <div class="fima-feat-text"><strong>Для вчителів</strong> — менше однотипних питань, більше часу на головне</div>
+          </div>
+          <div class="fima-feat">
+            <span class="fima-feat-icon">💻</span>
+            <div class="fima-feat-text"><strong>Технологія</strong> — розроблений разом з учнями як реальний навчальний проєкт з AI-інтеграцією</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CLUB -->
+<section class="club-section" id="club">
+  <div class="container">
+    <div class="section-tag">Позаурочна діяльність</div>
+    <div class="section-title">Coding Club · Гурток програмування</div>
+    <div class="club-inner">
+      <div>
+        <div class="club-desc">
+          Позаурочний гурток для тих, кому одного уроку мало. Тут не повторюють шкільну програму — тут йдуть далі. Алгоритми, структури даних, розробка ігор, підготовка до олімпіад. Результат — реальний код і реальні перемоги.
+        </div>
+        <div class="club-tags">
+          <span class="tag orange">Python</span>
+          <span class="tag">Unity + C#</span>
+          <span class="tag yellow">Алгоритми</span>
+          <span class="tag">Олімпіадні задачі</span>
+          <span class="tag orange">GameDev</span>
+          <span class="tag">Проєкти</span>
+        </div>
+        <div class="club-desc" style="font-size:14px;">
+          Кожне заняття — це або нова концепція, або розв'язання задачі, або робота над власним проєктом. Учні самі обирають напрям у рамках гуртка.
+        </div>
+      </div>
+      <div class="club-results">
+        <div class="result-item fade-up">
+          <span class="result-emoji">🏆</span>
+          <div class="result-text"><strong>ACM ICPC — Фінал України</strong> Перша участь гуртківців на міжнародному змаганні</div>
+        </div>
+        <div class="result-item fade-up">
+          <span class="result-emoji">🥉</span>
+          <div class="result-text"><strong>3 місце · міська олімпіада</strong> Учень 7-го кл. серед 8-класників, навчився програмуванню з нуля</div>
+        </div>
+        <div class="result-item fade-up">
+          <span class="result-emoji">🌍</span>
+          <div class="result-text"><strong>European Code Week — 1 місце по Дніпру</strong> 2024 рік, учасники — гуртківці</div>
+        </div>
+        <div class="result-item fade-up">
+          <span class="result-emoji">🥈</span>
+          <div class="result-text"><strong>Обласна олімпіада з офісного програмування</strong> 2×2-ге та 2×3-тє місце</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section class="portfolio-section" id="portfolio">
+  <div class="container">
+    <div class="section-tag">Авторські матеріали</div>
+    <div class="section-title white">Цифрове портфоліо</div>
+    <div class="portfolio-grid">
+
+      <div class="portfolio-card fade-up">
+        <div class="portfolio-thumb t1">🎮</div>
+        <div class="portfolio-body">
+          <div class="portfolio-type">Практична робота</div>
+          <div class="portfolio-title">Розробка базової механіки гри в Unity</div>
+          <div class="portfolio-desc">Від порожньої сцени до рухомого персонажа за один урок. Для учнів 8-го класу.</div>
+        </div>
+      </div>
+
+      <div class="portfolio-card fade-up">
+        <div class="portfolio-thumb t2">🐍</div>
+        <div class="portfolio-body">
+          <div class="portfolio-type">Практична робота</div>
+          <div class="portfolio-title">Графічні об'єкти кодом · Python Turtle</div>
+          <div class="portfolio-desc">Вивчення циклів та функцій через малювання. Учні бачать результат коду миттєво.</div>
+        </div>
+      </div>
+
+      <div class="portfolio-card fade-up">
+        <div class="portfolio-thumb t3">📖</div>
+        <div class="portfolio-body">
+          <div class="portfolio-type">Кейс-стаді</div>
+          <div class="portfolio-title">Від IT до викладання: Unity та Visual Studio у школі</div>
+          <div class="portfolio-desc">Особистий досвід адаптації інструментів IT-індустрії для шкільного курсу.</div>
+        </div>
+      </div>
+
+      <div class="portfolio-card fade-up">
+        <div class="portfolio-thumb t4">📊</div>
+        <div class="portfolio-body">
+          <div class="portfolio-type">Презентації</div>
+          <div class="portfolio-title">Основи GameDev · Вступ до Python · Кібербезпека</div>
+          <div class="portfolio-desc">Цикл із трьох презентацій до курсу «Сучасні технології».</div>
+        </div>
+      </div>
+
+      <div class="portfolio-card fade-up">
+        <div class="portfolio-thumb t5">📌</div>
+        <div class="portfolio-body">
+          <div class="portfolio-type">Методичний гайд</div>
+          <div class="portfolio-title">Алгоритм створення власного кросплатформеного проєкту</div>
+          <div class="portfolio-desc">Покроковий гайд від ідеї до готового продукту для учнів.</div>
+        </div>
+      </div>
+
+      <div class="portfolio-card fade-up">
+        <div class="portfolio-thumb t6">📅</div>
+        <div class="portfolio-body">
+          <div class="portfolio-type">Планування</div>
+          <div class="portfolio-title">КТП з акцентом на проєктну діяльність · 8 клас</div>
+          <div class="portfolio-desc">Кожна тема завершується створенням цифрового продукту.</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- EMAIL REQUEST BLOCK -->
+    <div class="portfolio-contact fade-up">
+      <div class="portfolio-contact-icon">📩</div>
+      <div class="portfolio-contact-text">
+        <div class="portfolio-contact-title">Хочете отримати матеріали?</div>
+        <div class="portfolio-contact-desc">Усі ресурси з портфоліо — практичні роботи, презентації, гайди та КТП — надаю за запитом. Напишіть на пошту і я надішлю потрібне.</div>
+      </div>
+      <a href="mailto:sln.lyceum23@gmail.com" class="portfolio-contact-btn">
+        sln.lyceum23@gmail.com
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about-section" id="about">
+  <div class="container">
+    <div class="section-tag">Про вчителя</div>
+    <div class="section-title">Шлях від IT до педагогіки</div>
+    <div class="about-inner">
+      <div>
+        <div class="about-text">
+          Я прийшов у педагогіку з IT-індустрії — і це змінило все. Замість того, щоб розповідати учням про програмування, я показую, як воно виглядає зсередини. Замість теорії — практика. Замість завдань із підручника — реальні проєкти.
+        </div>
+        <div class="about-text">
+          За перший рік і сім місяців роботи вчителем я впровадив Unity та Python у шкільний курс, відкрив гурток програмування, виступив на міській конференції як спікер і розробив власного AI-асистента для ліцею. Це не план на майбутнє — це вже реальність.
+        </div>
+        <div class="about-meta">
+          <div class="about-meta-item">
+            <div class="about-meta-label">Педагогічний стаж</div>
+            <div class="about-meta-value">1 рік 7 місяців</div>
+          </div>
+          <div class="about-meta-item">
+            <div class="about-meta-label">Категорія</div>
+            <div class="about-meta-value">Спеціаліст II категорії</div>
+          </div>
+          <div class="about-meta-item">
+            <div class="about-meta-label">Заклад</div>
+            <div class="about-meta-value">Ліцей №23, Дніпро</div>
+          </div>
+          <div class="about-meta-item">
+            <div class="about-meta-label">Предмет</div>
+            <div class="about-meta-value">Інформатика</div>
+          </div>
+        </div>
+      </div>
+      <div class="timeline">
+        <div class="tl-item fade-up">
+          <div class="tl-dot">💻</div>
+          <div class="tl-content">
+            <div class="tl-year">До 2024</div>
+            <div class="tl-title">IT-індустрія</div>
+            <div class="tl-desc">Практичний досвід у розробці — Unity, C#, Python, інструменти реального виробництва</div>
+          </div>
+        </div>
+        <div class="tl-item fade-up">
+          <div class="tl-dot">🏫</div>
+          <div class="tl-content">
+            <div class="tl-year">2024</div>
+            <div class="tl-title">Перший рік у школі</div>
+            <div class="tl-desc">Адаптація IT-підходу до педагогіки. Перші проєкти, перші результати учнів</div>
+          </div>
+        </div>
+        <div class="tl-item fade-up">
+          <div class="tl-dot">🏆</div>
+          <div class="tl-content">
+            <div class="tl-year">2024–2025</div>
+            <div class="tl-title">Перші перемоги</div>
+            <div class="tl-desc">Code Week #1 Дніпро, олімпіади, гурток, чат-бот Фіма, конференція як спікер</div>
+          </div>
+        </div>
+        <div class="tl-item fade-up">
+          <div class="tl-dot">🚀</div>
+          <div class="tl-content">
+            <div class="tl-year">2026 → </div>
+            <div class="tl-title">Всеукраїнський рівень</div>
+            <div class="tl-desc">Учнівські проєкти на всеукраїнських конкурсах з IT та розробки ігор</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">Саліонов <span>А.А.</span> · Ліцей №23</div>
+    <nav class="footer-nav">
+      <a href="#topic">Тема</a>
+      <a href="#achievements">Досягнення</a>
+      <a href="#methods">Методи</a>
+      <a href="#courses">Курси</a>
+      <a href="#fima">Фіма</a>
+      <a href="#club">Гурток</a>
+      <a href="#portfolio">Портфоліо</a>
+    </nav>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2026 · salion.games/lyceum23.html · Дніпровський ліцей №23</div>
+    <div class="footer-credo">— <strong>«Майбутнє будується нашими діями»</strong></div>
+  </div>
+</footer>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => { entry.target.classList.add('visible'); }, i * 80);
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+window.addEventListener('scroll', () => {
+  document.querySelector('nav').style.borderBottomColor =
+    window.scrollY > 50 ? 'rgba(233,92,17,0.35)' : 'rgba(233,92,17,0.2)';
+});
+</script>
+</body>
+</html>
